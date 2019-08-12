@@ -3,6 +3,6 @@ package algorithm
 import (
 )
 
-func FirstRecurringCharacter() String {
-	return "afdsasdfasfd"
+func FirstRecurringCharacter() string {
+	return "aaaa"
 }
