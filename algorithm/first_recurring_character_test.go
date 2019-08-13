@@ -1,9 +1,10 @@
 package algorithm
 
-import "testing"
-
+import (
+	"testing"
+)
 func Test(t *testing.T) {
-	if FirstRecurringCharacter() != "aaaa" {
-		t.Errorf("want %q", "aaaa")
+	if FirstRecurringCharacter("ad呜呜sa") != '呜' {
+		t.Errorf("FirstRecurringCharacter fail")
 	}
 }
