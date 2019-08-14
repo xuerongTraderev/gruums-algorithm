@@ -25,15 +25,13 @@ func EggDroppingPuzzle(egg, floor uint64) uint64 {
 		for column := uint64(1)  ; column < uint64(len(d2Array[row])) ; column = column + 1 {
 			// Consider first column to avoid out of array index
 			// Worst case: first floor did not break then need to try rest of floor
-			var min uint64 = 1 + d2Array[row][column-1] 
+			var min uint64 = d2Array[row][column-1] 
 
 			for index := uint64(1)  ; index < column; index = index + 1 {
 				var max uint64				
 
-				if d2Array[row-1][index-1] > d2Array[row][column-index-1] {
-					max = d2Array[row-1][index-1] + 1
-				} else {
-					max = d2Array[row][column-index-1] + 1
+				if max = d2Array[row-1][index-1]; max < d2Array[row][column-index-1] {
+					max = d2Array[row][column-index-1]
 				}
 
 				if max < min {
@@ -43,11 +41,11 @@ func EggDroppingPuzzle(egg, floor uint64) uint64 {
 
 			// Move last column out of for loop to avoid out of array index
 			// Worst case: last floor break then need to try rest of floor by using minus one egg
-			if min > d2Array[row - 1][column - 1] + 1 {
-				min = d2Array[row - 1][column - 1] + 1
+			if min > d2Array[row - 1][column - 1] {
+				min = d2Array[row - 1][column - 1]
 			}
 			
-			d2Array[row][column] = min
+			d2Array[row][column] = min + 1
 			
 		}
 	}
