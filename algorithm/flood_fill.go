@@ -1,8 +1,7 @@
 package algorithm
 
 import (
-	"fmt"
-	"github.com/gruums-common-go/stack"
+	"github.com/gruums-common-go/container/stack"
 )
 
 type D2ArrayIndex struct {
@@ -25,8 +24,6 @@ func FloodFill(d2metrix [][]int, startPoint *D2ArrayIndex, color int) {
 	for stack.Empty() != true {
 		var currentNode *D2ArrayIndex = stack.Pop().(*D2ArrayIndex)
 		d2metrix[currentNode.row][currentNode.column] = color
-		fmt.Println(d2metrix)
-		fmt.Println(currentNode)
 		var newNode *D2ArrayIndex
 		// Find valid neighbor nodes: UP, DOWN, LEFT, RIGHT.
 		// LEFT.
@@ -36,7 +33,6 @@ func FloodFill(d2metrix [][]int, startPoint *D2ArrayIndex, color int) {
 			newNode = &D2ArrayIndex{currentNode.row, currentNode.column - 1}
 			stack.Push(newNode)
 			exploredNodes[*newNode] = true
-			fmt.Println("Left")
 		}
 		// Right.
 		if currentNode.column + 1 < len(d2metrix[currentNode.row]) && 
@@ -45,7 +41,6 @@ func FloodFill(d2metrix [][]int, startPoint *D2ArrayIndex, color int) {
 			newNode = &D2ArrayIndex{currentNode.row, currentNode.column + 1}
 			stack.Push(newNode)
 			exploredNodes[*newNode] = true
-			fmt.Println("Right")
 		}
 		// Top.
 		if currentNode.row - 1 >= 0 && 
@@ -55,7 +50,6 @@ func FloodFill(d2metrix [][]int, startPoint *D2ArrayIndex, color int) {
 			newNode = &D2ArrayIndex{currentNode.row - 1, currentNode.column}
 			stack.Push(newNode)
 			exploredNodes[*newNode] = true
-			fmt.Println("Top")
 		}
 		// Down.
 		if currentNode.row + 1 < len(d2metrix) && 
@@ -65,7 +59,6 @@ func FloodFill(d2metrix [][]int, startPoint *D2ArrayIndex, color int) {
 			newNode = &D2ArrayIndex{currentNode.row + 1, currentNode.column}
 			stack.Push(newNode)
 			exploredNodes[*newNode] = true
-			fmt.Println("Down")
 		}
 
 	}
